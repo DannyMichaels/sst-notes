@@ -1,3 +1,16 @@
+# Project Layout
+
+An SST app is made up of two parts.
+
+- `lib/` - App Infrastructure
+  the code that describes the infrastructue of your serverless app is placed in the `lib/` directory of your project. SST uses `AWS CDK`, to create the infrastructure.
+- `src/` - App Code
+  The lambda function code that's run when your API is invoked is placed in the src/ directory of your porject.
+
+## Create an SST APP
+
+Later on we'll be adding a `frontend/` directory for our frontend React app.
+
 # Getting Started with Serverless Stack (SST)
 
 This project was bootstrapped with [Create Serverless Stack](https://docs.serverless-stack.com/packages/create-serverless-stack).
@@ -35,6 +48,7 @@ Runs your tests using Jest. Takes all the [Jest CLI options](https://jestjs.io/d
 ## Documentation
 
 Learn more about the Serverless Stack.
+
 - [Docs](https://docs.serverless-stack.com)
 - [@serverless-stack/cli](https://docs.serverless-stack.com/packages/cli)
 - [@serverless-stack/resources](https://docs.serverless-stack.com/packages/resources)
@@ -42,4 +56,5 @@ Learn more about the Serverless Stack.
 ## Community
 
 [Follow us on Twitter](https://twitter.com/ServerlessStack) or [post on our forums](https://discourse.serverless-stack.com).
+
 # sst-notes
