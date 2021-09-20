@@ -1,6 +1,7 @@
 import handler from './util/handler';
 import dynamoDb from './util/dynamodb';
 
+// PUT /notes/{id}
 export const main = handler(async (event) => {
   const data = JSON.parse(event.body);
   const params = {
