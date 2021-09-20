@@ -58,3 +58,9 @@ Learn more about the Serverless Stack.
 [Follow us on Twitter](https://twitter.com/ServerlessStack) or [post on our forums](https://discourse.serverless-stack.com).
 
 # sst-notes
+
+# example response:
+
+```
+{"userId":"123","noteId":"56b5de90-19b4-11ec-bef7-31af33c95455","content":"New World","attachment":"new.jpg","createdAt":1632102288121}
+```
