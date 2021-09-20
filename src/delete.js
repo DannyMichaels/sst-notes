@@ -1,6 +1,7 @@
 import handler from './util/handler';
 import dynamoDb from './util/dynamodb';
 
+// DELETE /notes/{id}
 export const main = handler(async (event) => {
   const params = {
     TableName: process.env.TABLE_NAME,
