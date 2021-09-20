@@ -4,12 +4,13 @@ import dynamoDb from './util/dynamodb';
 // PUT /notes/{id}
 export const main = handler(async (event) => {
   const data = JSON.parse(event.body);
+
   const params = {
-    tableName: process.env.TABLE_NAME,
+    TableName: process.env.TABLE_NAME,
     // 'Key' defines the partition key and sort key of the item to be updated
     Key: {
       userId: '123',
-      noteId: event.pathParamaters.id, // The id of the note from the path.
+      noteId: event.pathParameters.id, // The id of the note from the path.
     },
     // 'UpdateExpression' defines the attributes to be updated
     // 'ExpressionAttributeValues' defines the value in update expression
@@ -24,7 +25,8 @@ export const main = handler(async (event) => {
     ReturnValues: 'ALL_NEW',
   };
 
-  await dynamoDb.update(params);
+  const result = await dynamoDb.update(params);
+  let updatedNote = result.Attributes ?? null;
 
-  return { status: true };
+  return { status: true, note: updatedNote };
 });
