@@ -1,6 +1,6 @@
-import * as uuid from 'uuid';
 import handler from './util/handler';
 import dynamoDb from './util/dynamodb';
+import * as uuid from 'uuid';
 
 // creating an note, POST /notes.
 export const main = handler(async (event) => {
