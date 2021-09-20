@@ -12,7 +12,7 @@ export const main = handler(async () => {
     KeyConditionExpression: 'userId = :userId',
     // 'ExpressionAttribueValues' defines the value in the condition
     // - ':userId': defines 'userId' to be the id of the author
-    ExpressionAttribueValues: {
+    ExpressionAttributeValues: {
       ':userId': '123',
     },
   };
