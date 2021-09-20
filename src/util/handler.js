@@ -23,7 +23,7 @@ export default function handler(lambda) {
     } catch (err) {
       console.log(err);
 
-      body = { error: e.message };
+      body = { error: err.message };
       statusCode = 500;
     }
 
