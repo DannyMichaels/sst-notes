@@ -65,6 +65,9 @@ Learn more about the Serverless Stack.
 {"userId":"123","noteId":"56b5de90-19b4-11ec-bef7-31af33c95455","content":"New World","attachment":"new.jpg","createdAt":1632102288121}
 
 routes:
+GET /notes
 POST /notes
-GET /notes/{id} (noteId)
+GET /notes/{id}
+PUT /notes/id
+DELETE /notes/id
 ```
