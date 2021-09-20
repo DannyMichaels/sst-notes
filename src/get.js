@@ -3,13 +3,15 @@ import dynamoDb from './util/dynamodb';
 
 // GET note/{id}
 export const main = handler(async (event) => {
+  const userId = event.requestContext.authorizer.iam.cognitoIdentity.identityId;
+
   const params = {
     TableName: process.env.TABLE_NAME,
 
     // 'Key' defines the partition key and sort key of the item to be retrieved
 
     Key: {
-      userId: '123', // the id of the author
+      userId, // the id of the author
       noteId: event.pathParameters.id, // the id of the note from the path
     },
   };

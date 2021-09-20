@@ -1,9 +1,12 @@
 import handler from './util/handler';
 import dynamoDb from './util/dynamodb';
 
-// get all notes. GET /notes
+// get all notes (that belong to user). GET /notes
 
-export const main = handler(async () => {
+export const main = handler(async (event) => {
+  // get only notes for the authorized user
+  const userId = event.requestContext.authorizer.iam.cognitoIdentity.identityId;
+
   const params = {
     TableName: process.env.TABLE_NAME,
     // 'KeyConditionExpression' defines the condition for the query
@@ -13,7 +16,7 @@ export const main = handler(async () => {
     // 'ExpressionAttribueValues' defines the value in the condition
     // - ':userId': defines 'userId' to be the id of the author
     ExpressionAttributeValues: {
-      ':userId': '123',
+      ':userId': userId,
     },
   };
 
