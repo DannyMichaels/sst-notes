@@ -13,7 +13,7 @@ export async function main(event) {
 
     Item: {
       // The attributes of the note to be created
-      userId: '123', // The id of the author
+      userId: '123', // The id of the author, for now it's hardcoded, later we'll set it to authenticated user
       noteId: uuid.v1(), // A unique uuid
       content: data.content, // Parsed from request body
       attachment: data.attachment, // Parsed from request body
