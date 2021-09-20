@@ -9,7 +9,7 @@ test('Test StorageStack', () => {
   // THEN
   expect(stack).to(
     haveResource('AWS::DynamoDB::Table', {
-      billngMode: 'PAY_PER_REQUEST',
+      BillingMode: 'PAY_PER_REQUEST',
     })
   );
 });
