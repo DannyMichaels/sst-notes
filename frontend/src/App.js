@@ -7,6 +7,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Routes from './Routes';
 import { AppContext } from './lib/contextLib';
 import { Auth } from 'aws-amplify';
+import { onError } from './lib/errorLib';
 
 function App() {
   const { pathname } = useLocation();
@@ -27,7 +28,7 @@ function App() {
       await Auth.currentSession();
       userHasAuthenticated(true);
     } catch (error) {
-      if (error !== 'No current user') alert(error);
+      if (error !== 'No current user') onError(error);
     }
 
     setIsAuthenticating(false);

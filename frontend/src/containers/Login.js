@@ -5,6 +5,7 @@ import './Login.css';
 import { useAppContext } from '../lib/contextLib';
 import { useHistory } from 'react-router';
 import LoaderButton from '../components/LoaderButton';
+import { onError } from '../lib/errorLib';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -29,7 +30,7 @@ export default function Login() {
       userHasAuthenticated(true);
       history.push('/');
     } catch (error) {
-      alert(error.message);
+      onError(error);
       setIsLoading(false);
     }
   };
