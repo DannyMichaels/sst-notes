@@ -1,3 +1,5 @@
+import * as debug from './debug';
+
 /*
   - We are creating a handler function that we'll use as a wrapper around our Lambda functions.
   - It takes our Lambda function as the arguement
@@ -16,12 +18,15 @@ export default function handler(lambda) {
   return async function (event, context) {
     let body, statusCode;
 
+    debug.init(event);
+
     try {
       // Run the Lambda
       body = await lambda(event, context);
       statusCode = 200;
     } catch (err) {
-      console.log(err);
+      // Print debug messages
+      debug.flush(err);
 
       body = { error: err.message };
       statusCode = 500;
