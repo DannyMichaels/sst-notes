@@ -8,6 +8,13 @@ import { API } from 'aws-amplify';
 import './NewNote.css';
 import { s3Upload } from '../lib/awsLib';
 
+const createNote = (note) => {
+  // api name notes, api route /notes
+  return API.post('notes', '/notes', {
+    body: note,
+  });
+};
+
 export default function NewNote() {
   const file = useRef(null);
   const history = useHistory();
@@ -48,13 +55,6 @@ export default function NewNote() {
       onError(error);
       setIsLoading(false);
     }
-  };
-
-  const createNote = (note) => {
-    // api name notes, api route /notes
-    return API.post('notes', '/notes', {
-      body: note,
-    });
   };
 
   return (
