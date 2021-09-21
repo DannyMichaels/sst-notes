@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -12,10 +12,14 @@ function App() {
   const { pathname } = useLocation();
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const history = useHistory();
 
   const handleLogout = async () => {
     await Auth.signOut();
+
     userHasAuthenticated(false);
+
+    history.push('/login');
   };
 
   const verifyUserOnMount = async () => {
