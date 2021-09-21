@@ -1,5 +1,6 @@
 import './App.css';
 import Navbar from 'react-bootstrap/Navbar';
+import Routes from './Routes';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar>
+      <Routes />
     </div>
   );
 }
