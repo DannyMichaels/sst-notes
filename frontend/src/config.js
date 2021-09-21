@@ -2,6 +2,8 @@
 // setting up our React app.
 
 const config = {
+  MAX_ATTACHMENT_SIZE: 5000000,
+
   // Backend config
   s3: {
     REGION: process.env.REACT_APP_REGION,
