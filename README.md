@@ -71,3 +71,7 @@ GET /notes/{id}
 PUT /notes/id
 DELETE /notes/id
 ```
+
+# auto-deploys
+
+Handled by Seed @ console.seed.run
