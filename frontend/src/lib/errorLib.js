@@ -1,4 +1,6 @@
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/react';
+import { Integrations } from '@sentry/tracing';
+
 import config from '../config';
 
 const isLocal = process.env.NODE_ENV === 'development';
@@ -6,7 +8,15 @@ const isLocal = process.env.NODE_ENV === 'development';
 export function initSentry() {
   if (isLocal) return;
 
-  Sentry.init({ dsn: config.SENTRY_DSN });
+  Sentry.init({
+    dsn: config.SENTRY_DSN,
+    integrations: [new Integrations.BrowserTracing()],
+
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+  });
 }
 
 // sentry error log
