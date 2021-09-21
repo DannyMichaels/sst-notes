@@ -3,7 +3,6 @@ import { Auth } from 'aws-amplify';
 import Form from 'react-bootstrap/Form';
 import './Login.css';
 import { useAppContext } from '../lib/contextLib';
-import { useHistory } from 'react-router';
 import LoaderButton from '../components/LoaderButton';
 import { onError } from '../lib/errorLib';
 import { useFormFields } from '../lib/hooksLib';
@@ -17,7 +16,6 @@ export default function Login() {
 
   const [isLoading, setIsLoading] = useState(false);
   const { userHasAuthenticated } = useAppContext();
-  const history = useHistory();
 
   const isFormValid = useMemo(
     () => email.length > 0 && password.length > 0,
@@ -32,7 +30,7 @@ export default function Login() {
     try {
       await Auth.signIn(email, password); // returns a signed in user object in promise
       userHasAuthenticated(true);
-      history.push('/');
+      // no need to history.push('/') because Authenticated and UnAuthenticated route components take care of that
     } catch (error) {
       onError(error);
       setIsLoading(false);
