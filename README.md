@@ -2,6 +2,25 @@
 
 live deploy: https://d268r3kvwnb0lh.cloudfront.net
 
+# stack
+
+SST - serverless stack
+auto deploys: Seed
+
+## backend
+
+- Lambda
+- DynamoDB (database)
+- API gateway
+
+## Frotend:
+
+- Library: React
+- AWS-Amplify
+- Stripe
+- UI: bootstrap
+- Error reporting: Sentry
+
 # Project Layout
 
 An SST app is made up of two parts.
