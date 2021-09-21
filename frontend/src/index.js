@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import config from './config';
 import { Amplify } from 'aws-amplify';
+import { initSentry } from './lib/errorLib';
+
+initSentry(); // errors CI
 
 /*
 - Amplify refers to Cognito as Auth, S3 as Storage, and API Gateway as API.

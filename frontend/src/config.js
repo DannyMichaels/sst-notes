@@ -3,6 +3,9 @@
 
 const config = {
   STRIPE_KEY: 'pk_test_dcdmtFlahGtTRyHxAG8x5u0m00uouVFTwp', // publishable keys aren't confidential
+  SENTRY_DSN:
+    'https://5a33ca30756c4c49a6c6cdcc3cffe5ca@o1008644.ingest.sentry.io/5972636',
+
   MAX_ATTACHMENT_SIZE: 5000000,
 
   // Backend config
