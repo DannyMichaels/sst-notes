@@ -6,11 +6,16 @@ import { useAppContext } from '../lib/contextLib';
 import { useHistory } from 'react-router';
 import LoaderButton from '../components/LoaderButton';
 import { onError } from '../lib/errorLib';
+import { useFormFields } from '../lib/hooksLib';
 
 export default function Login() {
-  const [email, setEmail] = useState('');
+  const [fields, handleChange] = useFormFields({
+    email: '',
+    password: '',
+  });
+  const { email, password } = fields;
+
   const [isLoading, setIsLoading] = useState(false);
-  const [password, setPassword] = useState('');
   const { userHasAuthenticated } = useAppContext();
   const history = useHistory();
 
@@ -25,8 +30,7 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      const signedInUser = await Auth.signIn(email, password);
-      console.log({ signedInUser });
+      await Auth.signIn(email, password); // returns a signed in user object in promise
       userHasAuthenticated(true);
       history.push('/');
     } catch (error) {
@@ -38,13 +42,14 @@ export default function Login() {
   return (
     <div className="Login">
       <Form onSubmit={handleSubmit}>
+        {/* bootstrap makes controlId render id in inspect tab */}
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
             autoFocus
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">
@@ -52,7 +57,7 @@ export default function Login() {
           <Form.Control
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChange}
           />
         </Form.Group>
         <LoaderButton
