@@ -74,6 +74,7 @@ export default function Notes() {
 
         setContent(content);
         setNote(note);
+        setIsLoading(false);
       } catch (e) {
         onError(e);
       }
