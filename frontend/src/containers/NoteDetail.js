@@ -5,13 +5,24 @@ import { onError } from '../lib/errorLib';
 import config from '../config';
 import Form from 'react-bootstrap/Form';
 import LoaderButton from '../components/LoaderButton';
+import { s3Upload } from '../lib/awsLib';
+import './NoteDetail.css';
 
 function getOneNote(id) {
   return API.get('notes', `/notes/${id}`);
 }
 
-// note detail
-export default function Notes() {
+function saveNote(id, noteData) {
+  return API.put('notes', `/notes/${id}`, {
+    body: noteData,
+  });
+}
+
+function deleteNote(id) {
+  return API.del('notes', `/notes/${id}`);
+}
+
+export default function NoteDetail() {
   const file = useRef(null);
   const { id } = useParams();
   const history = useHistory();
@@ -33,7 +44,7 @@ export default function Notes() {
   }
 
   async function handleSubmit(event) {
-    let attachment;
+    let newAttachment;
 
     event.preventDefault();
 
@@ -47,6 +58,22 @@ export default function Notes() {
     }
 
     setIsLoading(true);
+
+    try {
+      if (file.current) {
+        newAttachment = await s3Upload(file.current);
+      }
+
+      let updateNoteData = {
+        content,
+        attachment: newAttachment || note.attachment,
+      };
+      await saveNote(id, updateNoteData);
+      history.push('/');
+    } catch (error) {
+      onError(error);
+      setIsLoading(false);
+    }
   }
 
   async function handleDelete(event) {
@@ -60,6 +87,14 @@ export default function Notes() {
       return;
     }
     setIsDeleting(true);
+
+    try {
+      await deleteNote(id);
+      history.push('/');
+    } catch (error) {
+      onError(error);
+      setIsDeleting(false);
+    }
   }
 
   useEffect(() => {
@@ -84,7 +119,7 @@ export default function Notes() {
   }, [id]);
 
   return (
-    <div className="Notes">
+    <div className="NoteDetail">
       {note && (
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="content">
