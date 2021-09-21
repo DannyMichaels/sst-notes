@@ -12,7 +12,7 @@ export const main = handler(async (event) => {
 
     Key: {
       userId, // the id of the author
-      noteId: event.pathParameters.id, // the id of the note from the path
+      // noteId: event.pathParameters.id, // the id of the note from the path
     },
   };
 
