@@ -3,10 +3,12 @@ import { Auth } from 'aws-amplify';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './Login.css';
+import { useAppContext } from '../lib/contextLib';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { userHasAuthenticated } = useAppContext();
 
   const isFormValid = useMemo(
     () => email.length > 0 && password.length > 0,
@@ -19,7 +21,7 @@ export default function Login() {
     try {
       const signedInUser = await Auth.signIn(email, password);
       console.log({ signedInUser });
-      alert('Logged in!');
+      userHasAuthenticated(true);
     } catch (error) {
       alert(error.message);
     }
