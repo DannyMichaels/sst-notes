@@ -1,3 +1,7 @@
+# notes
+
+live deploy: https://d268r3kvwnb0lh.cloudfront.net
+
 # Project Layout
 
 An SST app is made up of two parts.
