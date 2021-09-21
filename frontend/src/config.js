@@ -2,6 +2,7 @@
 // setting up our React app.
 
 const config = {
+  STRIPE_KEY: 'pk_test_dcdmtFlahGtTRyHxAG8x5u0m00uouVFTwp', // publishable keys aren't confidential
   MAX_ATTACHMENT_SIZE: 5000000,
 
   // Backend config
