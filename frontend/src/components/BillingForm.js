@@ -82,7 +82,6 @@ export default function BillingForm({ isLoading, onSubmit }) {
 
       <Form.Group size="lg" controlId="name">
         <Form.Label>Cardholder&apos;s name</Form.Label>
-        “
         <Form.Control
           type="text"
           value={fields.name}

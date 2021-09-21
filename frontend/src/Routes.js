@@ -6,16 +6,18 @@ import Signup from './containers/Signup';
 import NewNote from './containers/NewNote';
 import NoteDetail from './containers/NoteDetail';
 import Settings from './containers/Settings';
+import UnauthenticatedRoute from './components/UnauthenticatedRoute';
+import AuthenticatedRoute from './components/AuthenticatedRoute';
 
 export default function Routes() {
   return (
     <Switch>
       <Route exact path={['/', '/notes']} component={Home} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
-      <Route exact path="/notes/new" component={NewNote} />
-      <Route exact path="/notes/:id" component={NoteDetail} />
-      <Route exact path="/settings" component={Settings} />
+      <UnauthenticatedRoute exact path="/login" component={Login} />
+      <UnauthenticatedRoute exact path="/signup" component={Signup} />
+      <AuthenticatedRoute exact path="/notes/new" component={NewNote} />
+      <AuthenticatedRoute exact path="/notes/:id" component={NoteDetail} />
+      <AuthenticatedRoute exact path="/settings" component={Settings} />
 
       <Route component={NotFound} />
     </Switch>
