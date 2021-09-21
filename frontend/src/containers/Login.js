@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { Auth } from 'aws-amplify';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './Login.css';
@@ -11,9 +12,18 @@ export default function Login() {
     () => email.length > 0 && password.length > 0,
     [email, password]
   );
-  function handleSubmit(e) {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  }
+
+    try {
+      const signedInUser = await Auth.signIn(email, password);
+      console.log({ signedInUser });
+      alert('Logged in!');
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
     <div className="Login">
