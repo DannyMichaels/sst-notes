@@ -7,10 +7,11 @@ import NewNote from './containers/NewNote';
 import NoteDetail from './containers/NoteDetail';
 import Settings from './containers/Settings';
 import ResetPassword from './containers/ResetPassword';
+import ChangeEmail from './containers/ChangeEmail';
+import ChangePassword from './containers/ChangePassword';
 
 import UnauthenticatedRoute from './components/UnauthenticatedRoute';
 import AuthenticatedRoute from './components/AuthenticatedRoute';
-import ChangePassword from './containers/ChangePassword';
 
 export default function Routes() {
   return (
@@ -31,7 +32,11 @@ export default function Routes() {
         path="/settings/password"
         component={ChangePassword}
       />
-
+      <AuthenticatedRoute
+        exact
+        path="/settings/email"
+        component={ChangeEmail}
+      />
       <Route component={NotFound} />
     </Switch>
   );
