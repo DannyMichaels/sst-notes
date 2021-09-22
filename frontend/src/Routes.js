@@ -10,6 +10,7 @@ import ResetPassword from './containers/ResetPassword';
 
 import UnauthenticatedRoute from './components/UnauthenticatedRoute';
 import AuthenticatedRoute from './components/AuthenticatedRoute';
+import ChangePassword from './containers/ChangePassword';
 
 export default function Routes() {
   return (
@@ -25,6 +26,11 @@ export default function Routes() {
       <AuthenticatedRoute exact path="/notes/new" component={NewNote} />
       <AuthenticatedRoute exact path="/notes/:id" component={NoteDetail} />
       <AuthenticatedRoute exact path="/settings" component={Settings} />
+      <AuthenticatedRoute
+        exact
+        path="/settings/password"
+        component={ChangePassword}
+      />
 
       <Route component={NotFound} />
     </Switch>

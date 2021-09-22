@@ -7,6 +7,8 @@ import config from '../config';
 import BillingForm from '../components/BillingForm';
 import { Elements } from '@stripe/react-stripe-js';
 import './Settings.css';
+import { LinkContainer } from 'react-router-bootstrap';
+import LoaderButton from '../components/LoaderButton';
 
 const billUser = (details) => {
   return API.post('notes', '/billing', {
@@ -42,8 +44,22 @@ export default function Settings() {
       setIsLoading(false);
     }
   };
+
   return (
     <div className="Settings">
+      <LinkContainer to="/settings/email">
+        <LoaderButton block bsSize="large">
+          Change Email
+        </LoaderButton>
+      </LinkContainer>
+
+      <LinkContainer to="/settings/password">
+        <LoaderButton block bsSize="large">
+          Change Password
+        </LoaderButton>
+      </LinkContainer>
+      <hr />
+
       <Elements
         stripe={stripePromise}
         fonts={[
