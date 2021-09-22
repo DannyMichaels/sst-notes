@@ -44,9 +44,13 @@ function App() {
     !isAuthenticating && (
       <div className="App container py-3">
         <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
-          <Navbar.Brand className="font-weight-bold text-muted">
-            Scratch
-          </Navbar.Brand>
+          <LinkContainer to="/">
+            <Nav.Link>
+              <Navbar.Brand className="font-weight-bold text-muted">
+                Scratch
+              </Navbar.Brand>
+            </Nav.Link>
+          </LinkContainer>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav activeKey={pathname}>

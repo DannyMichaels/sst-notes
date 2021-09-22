@@ -66,6 +66,7 @@ export default function BillingForm({ isLoading, onSubmit }) {
 
     onSubmit(fields.storage, { token, error });
   };
+
   return (
     <Form className="BillingForm" onSubmit={handleSubmitClick}>
       <Form.Group size="lg" controlId="storage">
